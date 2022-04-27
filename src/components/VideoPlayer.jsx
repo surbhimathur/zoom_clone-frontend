@@ -1,7 +1,7 @@
 import { BsMicFill, BsMicMuteFill } from "react-icons/bs";
 import{FaVideo, FaVideoSlash} from "react-icons/fa";
 import {Grid, Paper, Typography} from '@material-ui/core';
-import React,{useContext} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 
 import {SocketContext} from '../SocketContext';
 import avatar from "../../src/avatar.png";
@@ -66,7 +66,6 @@ const VideoPlayer = () => {
       myVdoStatus,userVdoStatus,userMicStatus}=useContext(SocketContext);
     const classes=useStyles();
     
-    
 
   return (
     <Grid container className={classes.gridContainer}>
@@ -78,6 +77,7 @@ const VideoPlayer = () => {
             <Grid item xs={12} md={6}>
                 <Typography variant="h5" gutterBottom>
                 {name || 'Name'}
+                {console.log('my name is:',name)}
                 </Typography>
                 <div className={classes.videoAvatarContainer}>
                 <video playsInline muted ref={myVideo} autoPlay className={classes.video} style={{
@@ -106,12 +106,13 @@ const VideoPlayer = () => {
             )}
         {/* users video*/}
         {
-            callAccepted && !callEnded &&(
+            callAccepted && !callEnded && (
         
         <Paper className={classes.paper}>
             <Grid item xs={12} md={6}>
                 <Typography variant="h5" gutterBottom>
-                {call?.name || 'Name'}
+                {call.name || 'Name'}
+                {console.log('users name is',call.name)}
                 </Typography>
                 <div className={classes.videoAvatarContainer}>
                 <video playsInline ref={userVideo} autoPlay className={classes.video} style={{
@@ -138,7 +139,7 @@ const VideoPlayer = () => {
            
     </Grid>
     
-  )
-}
+  );
+};
 
 export default VideoPlayer
