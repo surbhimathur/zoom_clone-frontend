@@ -28,6 +28,12 @@ const useStyles= makeStyles((theme)=>({
     alignItems: 'center',
     width: '100%',
   },
+  heading:{
+    [theme.breakpoints.between('xs', 'sm')]: {
+      fontSize:'50px'
+    },
+    
+  }
 }));
 
 
@@ -36,7 +42,7 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography variant="h2" align="center">Let's Chat</Typography>
+          <Typography variant="h2" align="center" className={classes.heading}>Let's Chat</Typography>
         </AppBar>
         <VideoPlayer />
         <Options>

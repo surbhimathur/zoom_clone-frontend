@@ -11,16 +11,18 @@ const useStyles = makeStyles((theme) => ({
     video: {
       display:'block',
       width: '550px',
-      [theme.breakpoints.down('xs')]: {
-        width: '300px',
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+        height:'auto'
       },
+      
     },
     hideVideo: {
       display:'none',
       
     },
     gridContainer: {
-      border:'1px solid yellow',
+      
       justifyContent: 'center',
       
       [theme.breakpoints.down('xs')]: {
@@ -30,8 +32,14 @@ const useStyles = makeStyles((theme) => ({
     paper: {
       padding: '10px',
       border: '2px solid black',
-      margin: '10px',
-     
+      margin: '20px',
+      [theme.breakpoints.down('xs')]: {
+        width: 'auto',
+        margin: '20px',
+      },
+      // [theme.breakpoints.between('sm','md')]: {
+      //   width: '75%',
+      // },
     },
     buttons:{
       
@@ -49,14 +57,34 @@ const useStyles = makeStyles((theme) => ({
     avatar:{
       width:'300px',
       height:'300px',
-      
+      objectFit:'cover',
+      [theme.breakpoints.down('xs')]: {
+        width: '200px',
+        height:'200px'
+
+      },
     },
     videoAvatarContainer:{
       display: 'flex',
       alignItems: 'center',
       width: '550px',
-      border:'1px solid red',
-     position:'relative'
+      border:'2px solid red',
+     position:'relative',
+     [theme.breakpoints.down('sm')]: {
+      width: 'auto'
+    },
+    // [theme.breakpoints.between('sm','md')]: {
+    //   width: '100%',
+    // }
+    },
+    avatarbox:{
+      [theme.breakpoints.down('lg')]: {
+        width: '100%',
+      
+      },
+      // [theme.breakpoints.between('sm','md')]: {
+      //   width: '100%',
+      // }
     }
   }));
 
@@ -74,7 +102,7 @@ const VideoPlayer = () => {
             stream && (
         
         <Paper className={classes.paper}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={12}>
                 <Typography variant="h5" gutterBottom>
                 {name || 'Name'}
                 {console.log('my name is:',name)}
@@ -82,17 +110,18 @@ const VideoPlayer = () => {
                 <div className={classes.videoAvatarContainer}>
                 <video playsInline muted ref={myVideo} autoPlay className={classes.video} style={{
                 opacity: `${myVdoStatus ? "1" : "0"}`,}}/>
-                <div style={{ 
+                <div className={classes.avatarbox} style={{ 
                 border:'1px solid blue',
                 background: 'linear-gradient(to right, #800080, #ffc0cb)', 
                 opacity: `${myVdoStatus ? "-1" : "2"}`,
                 display:'flex',
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
-                width:'100%',
+                // width:'550px',
                 position:'absolute',
-                height:'400px'
-                
+                top:0,
+                bottom:0
+               
               }}
               ><img src={avatar} className={classes.avatar} alt="avatar"/>
               </div>
@@ -117,7 +146,7 @@ const VideoPlayer = () => {
                 <div className={classes.videoAvatarContainer}>
                 <video playsInline ref={userVideo} autoPlay className={classes.video} style={{
                 opacity: `${userVdoStatus ? "1" : "0"}`,}}/>
-                <div style={{ 
+                <div className={classes.avatarbox} style={{ 
                 border:'1px solid blue',
                 background: 'linear-gradient(to right, #800080, #ffc0cb)', 
                 opacity: `${userVdoStatus ? "-1" : "2"}`,
@@ -126,7 +155,7 @@ const VideoPlayer = () => {
                 alignItems: 'center',
                 width:'100%',
                 position:'absolute',
-                height:'400px'
+                
                 
               }}
               ><img src={avatar} className={classes.avatar} alt="avatar"/>
