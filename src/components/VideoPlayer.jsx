@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-  
+  //videoplayer component for displaying and controlling audio and video options.
 const VideoPlayer = () => {
     const {name,callAccepted,myVideo,userVideo,callEnded,stream,call,updateMic,myMicStatus,updateVideo,
       myVdoStatus,userVdoStatus,userMicStatus}=useContext(SocketContext);

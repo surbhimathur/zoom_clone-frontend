@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   }
  }));
 
- 
+ //options component for making a call to another user. Have to enter username and id for calling purpose.
 const Options = ({children}) => {
   const {me,callAccepted,name,setName,callEnded,leaveCall,callUser}=useContext(SocketContext);
   const [idToCall,setIdToCall]=useState('');

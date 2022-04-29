@@ -5,6 +5,7 @@ import React, { createContext, useEffect, useRef, useState } from "react";
 import Peer from "simple-peer";
 import { io } from "socket.io-client";
 
+//for creating connection and communicating using socket.io 
 const SocketContext = createContext();
 const socket = io("http://localhost:5000");
 const ContextProvider = ({ children }) => {
@@ -23,7 +24,7 @@ const ContextProvider = ({ children }) => {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-
+//retreiving current videostream and audiostream
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
@@ -58,7 +59,7 @@ const ContextProvider = ({ children }) => {
       }
     });
   }, []);
-
+//answering call
   const answerCall = () => {
     setCallAccepted(true);
     setOtherUser(call.from);
@@ -80,6 +81,8 @@ const ContextProvider = ({ children }) => {
 
     connectionRef.current = peer;
   };
+  
+//making a call
 
   const callUser = (id) => {
     const peer = new Peer({ initiator: true, trickle: false, stream });
@@ -106,14 +109,14 @@ const ContextProvider = ({ children }) => {
     });
     connectionRef.current = peer;
   };
-
+//ending call
   const leaveCall = () => {
     setCallEnded(true);
     connectionRef.current.destroy();
     socket.emit("endCall", { id: otherUser });
     window.location.reload();
   };
-
+//updating current status of microphone(audio)
   const updateMic = () => {
     setMyMicStatus((currentStatus) => {
       socket.emit("updateMyMedia", {
@@ -126,6 +129,7 @@ const ContextProvider = ({ children }) => {
   };
 
   
+//updating current status of video
 
   const updateVideo = () => {
     setMyVdoStatus((currentStatus) => {

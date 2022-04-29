@@ -16,6 +16,7 @@ pickupcall:{
   }, 
 }
 }));
+//notifications component for displaying the username who is calling and then answering the call.
 const Notifications = () => {
   const {answerCall,call,callAccepted} = useContext(SocketContext);
   const classes=useStyles();

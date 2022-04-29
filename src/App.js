@@ -16,7 +16,7 @@ const useStyles= makeStyles((theme)=>({
     alignItems: 'center',
     width: '600px',
     border: '2px solid black',
-
+    background: 'linear-gradient(to bottom, #c04848, #480048)',
     [theme.breakpoints.down('xs')]: {
       width: '90%',
     },
@@ -32,6 +32,7 @@ const useStyles= makeStyles((theme)=>({
     [theme.breakpoints.between('xs', 'sm')]: {
       fontSize:'50px'
     },
+    color:'beige',
     
   }
 }));
@@ -42,7 +43,7 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography variant="h2" align="center" className={classes.heading}>Let's Chat</Typography>
+          <Typography variant="h2" align="center" className={classes.heading}>Videocity</Typography>
         </AppBar>
         <VideoPlayer />
         <Options>
