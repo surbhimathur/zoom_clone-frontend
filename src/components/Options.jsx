@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     width: '100%',
-    border:'1px solid red',
    
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
@@ -23,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
     width: '600px',
     margin: '35px 0',
     padding: 0,
+    
    
     [theme.breakpoints.down('xs')]: {
       width: '85%',
     },
     [theme.breakpoints.between('sm','md')]: {
       width: '75%',
+      
     },
   },
   margin: {
@@ -41,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px 20px',
     border: '2px solid black',
   },
+  labelRoot: {
+    lineHeight:1.5,
+  }
  }));
 
  
@@ -55,7 +59,11 @@ const Options = ({children}) => {
         <Grid container className={classes.gridContainer}>
           <Grid item xs={12} md={6} className={classes.padding}>
             <Typography gutterBottom variant="h6">Account Info</Typography>
-            <TextField label="Name" value={name} onChange={(e)=>setName(e.target.value)} fullWidth/>
+            <TextField label="Name" value={name} variant="standard" onChange={(e)=>setName(e.target.value)} fullWidth  InputLabelProps={{
+          classes: {
+            root: classes.labelRoot,
+          }
+        }}/>
          
           <CopyToClipboard text={me} className={classes.margin}>
             <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large"/>}>
@@ -66,7 +74,11 @@ const Options = ({children}) => {
           
           <Grid item xs={12} md={6} className={classes.padding}>
             <Typography gutterBottom variant="h6">Make A Call</Typography>
-            <TextField label="ID to Call" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth/>
+            <TextField label="ID to Call" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth InputLabelProps={{
+          classes: {
+            root: classes.labelRoot,
+          }
+        }}/>
             {callAccepted && !callEnded ?(
              <Button variant="contained" color="secondary" fullWidth startIcon={<PhoneDisabled fontSize="large"/>} onClick={leaveCall} className={classes.margin}>
                Hang Up

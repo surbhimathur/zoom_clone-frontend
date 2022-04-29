@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height:'auto'
       },
-      
+      border:'1px solid red'
     },
     hideVideo: {
       display:'none',
@@ -66,9 +66,9 @@ const useStyles = makeStyles((theme) => ({
     },
     videoAvatarContainer:{
       display: 'flex',
+      border:'1px solid black',
       alignItems: 'center',
       width: '550px',
-      border:'2px solid red',
      position:'relative',
      [theme.breakpoints.down('sm')]: {
       width: 'auto'
@@ -111,7 +111,6 @@ const VideoPlayer = () => {
                 <video playsInline muted ref={myVideo} autoPlay className={classes.video} style={{
                 opacity: `${myVdoStatus ? "1" : "0"}`,}}/>
                 <div className={classes.avatarbox} style={{ 
-                border:'1px solid blue',
                 background: 'linear-gradient(to right, #800080, #ffc0cb)', 
                 opacity: `${myVdoStatus ? "-1" : "2"}`,
                 display:'flex',
@@ -147,15 +146,16 @@ const VideoPlayer = () => {
                 <video playsInline ref={userVideo} autoPlay className={classes.video} style={{
                 opacity: `${userVdoStatus ? "1" : "0"}`,}}/>
                 <div className={classes.avatarbox} style={{ 
-                border:'1px solid blue',
+               
                 background: 'linear-gradient(to right, #800080, #ffc0cb)', 
                 opacity: `${userVdoStatus ? "-1" : "2"}`,
                 display:'flex',
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
-                width:'100%',
+                //width:'100%',
                 position:'absolute',
-                
+                top:0,
+                bottom:0
                 
               }}
               ><img src={avatar} className={classes.avatar} alt="avatar"/>
