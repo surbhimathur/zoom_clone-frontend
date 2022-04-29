@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height:'auto'
       },
-      border:'1px solid red'
+      
     },
     hideVideo: {
       display:'none',
@@ -66,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
     },
     videoAvatarContainer:{
       display: 'flex',
-      border:'1px solid black',
       alignItems: 'center',
       width: '550px',
      position:'relative',
@@ -137,7 +136,7 @@ const VideoPlayer = () => {
             callAccepted && !callEnded && (
         
         <Paper className={classes.paper}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={12}>
                 <Typography variant="h5" gutterBottom>
                 {call.name || 'Name'}
                 {console.log('users name is',call.name)}
