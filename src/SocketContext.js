@@ -7,7 +7,7 @@ import { io } from "socket.io-client";
 
 //for creating connection and communicating using socket.io 
 const SocketContext = createContext();
-const socket = io("http://localhost:5000");
+const socket = io("https://videocity.herokuapp.com/");
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState();
   const [me, setMe] = useState("");
